@@ -1,5 +1,5 @@
 class VendingMachine < ActiveRecord::Base
-  state_machine :state, initial: :ready do
+  state_machine :state, initial: :a do
     event :event_a do
       transition :a => :b
     end

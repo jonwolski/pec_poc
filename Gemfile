@@ -6,6 +6,6 @@ gem 'unicorn-rails'
 gem 'sidekiq'
 gem 'dotenv-rails'
 gem 'state_machines-activerecord'
-gem 'state_machines-graphviz', require: false
+gem 'state_machines-graphviz'
 gem 'pry-rails'
 
