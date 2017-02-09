@@ -4,4 +4,8 @@ class Transition < ActiveRecord::Base
   scope :unprocessed, -> {
     where(enqueued_at: nil, processed_at: nil, q_task_id: nil).order(:id)
   }
+
+  def replay!
+    vending_machine.send( "#{event}!".to_sym )
+  end
 end
