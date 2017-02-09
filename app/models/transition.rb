@@ -7,5 +7,6 @@ class Transition < ActiveRecord::Base
 
   def replay!
     vending_machine.send( "#{event}!".to_sym )
+    update!(processed_at: Time.now)
   end
 end
