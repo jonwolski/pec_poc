@@ -1,14 +1,14 @@
 VendingMachine.disable_sleep!
 
-50.times do
+15.times do
   VendingMachine.create
 end
 
-VendingMachine.order(:id).limit(40).each &:'event_a!'
-VendingMachine.order(:id).limit(30).each &:'event_b!'
-VendingMachine.order(:id).limit(20).each &:'event_c!'
-VendingMachine.order(:id).limit(10).each &:'event_d!'
-VendingMachine.order(:id).limit( 5).each &:'event_e!'
+VendingMachine.order(:id).limit(12).each &:'event_a!'
+VendingMachine.order(:id).limit(9).each &:'event_b!'
+VendingMachine.order(:id).limit(6).each &:'event_c!'
+VendingMachine.order(:id).limit(3).each &:'event_d!'
+VendingMachine.order(:id).limit( 2).each &:'event_e!'
 VendingMachine.with_state(:e).first.event_e2!
 
 VendingMachine.with_state(:a).each do |vm|

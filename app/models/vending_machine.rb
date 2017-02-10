@@ -23,7 +23,13 @@ class VendingMachine < ActiveRecord::Base
 
   def process
     Rails.logger.info "machine ##{id} in state :#{state} processing"
-    sleep sleep_period if VendingMachine.sleep_enabled?
+    if VendingMachine.sleep_enabled?
+      sp = sleep_period
+      Rails.logger.info "Sleeping for #{sp}"
+      sleep sp
+    else
+      Rails.logger.info "Sleeping disabled"
+    end
     Rails.logger.info "machine ##{id} in state :#{state} processed"
   end
 
@@ -42,10 +48,11 @@ class VendingMachine < ActiveRecord::Base
       @sleep_enabled
     end
   end
+
   private
 
   def sleep_period
-    (state_name_to_int - 10) * 100 * MILLISECONDS + 3 * SECONDS
+    (0xf - state_name_to_int) * 100 * MILLISECONDS + 4 * SECONDS
   end
 
   def state_name_to_int
