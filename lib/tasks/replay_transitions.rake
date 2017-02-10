@@ -1,6 +1,7 @@
 desc 'replay the stored state transitions on their state machine instances'
 task replay_transitions: :environment do
-  Transition.replay_in_batches!
+#  Transition.replay_in_batches!
+  Transition.replay_all!
 end
 
 desc 'load more transitions for replay'

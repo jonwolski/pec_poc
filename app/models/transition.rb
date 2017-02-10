@@ -6,6 +6,12 @@ class Transition < ActiveRecord::Base
   }
 
   class << self
+    def replay_all!
+      q_task_id = SecureRandom.uuid
+      Transition.unprocessed.update_all(enqueued_at: Time.now, q_task_id: q_task_id)
+      Transition.where(q_task_id: q_task_id).order(:id).each &:replay!
+    end
+
     def replay_in_batches!
       Transition.unprocessed.group(:vending_machine_id).pluck(:vending_machine_id).each do |vending_machine_id|
         TransitionReplayJob.perform_later(vending_machine_id)
@@ -24,8 +30,8 @@ class Transition < ActiveRecord::Base
 
 
   def replay!
-    TransitionReplayJob.perform_later(id, vending_machine_id)
-#    replay_now!
+    Rails.logger.info "enqueueing [#{[id, vending_machine_id, event].join ", "}]"
+    TransitionReplayJob.set(queue: "mb-#{vending_machine_id % 20}").perform_later(id, vending_machine_id, event)
   end
 
   def replay_now!

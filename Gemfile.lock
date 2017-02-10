@@ -108,6 +108,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-limit_fetch (3.4.0)
+      sidekiq (>= 4)
     slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -146,6 +148,7 @@ DEPENDENCIES
   pry-rails
   rails (~> 4.2.6)
   sidekiq
+  sidekiq-limit_fetch
   state_machines-activerecord
   state_machines-graphviz
   unicorn-rails

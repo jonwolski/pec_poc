@@ -52,7 +52,7 @@ class VendingMachine < ActiveRecord::Base
   private
 
   def sleep_period
-    (0xf - state_name_to_int) * 100 * MILLISECONDS + 4 * SECONDS
+    (0xf - state_name_to_int) * 10 * MILLISECONDS + 4 * SECONDS
   end
 
   def state_name_to_int

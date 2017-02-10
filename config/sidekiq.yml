@@ -1,0 +1,49 @@
+---
+:verbose: true
+:concurrency: 25
+production:
+  :concurrency: 20
+:queues:
+  - mailers
+  - default
+  - mb-0
+  - mb-1
+  - mb-2
+  - mb-3
+  - mb-4
+  - mb-5
+  - mb-6
+  - mb-7
+  - mb-8
+  - mb-9
+  - mb-10
+  - mb-11
+  - mb-12
+  - mb-13
+  - mb-14
+  - mb-15
+  - mb-16
+  - mb-17
+  - mb-18
+  - mb-19
+:process_limits:
+  mb-0: 1
+  mb-1: 1
+  mb-2: 1
+  mb-3: 1
+  mb-4: 1
+  mb-5: 1
+  mb-6: 1
+  mb-7: 1
+  mb-8: 1
+  mb-9: 1
+  mb-10: 1
+  mb-11: 1
+  mb-12: 1
+  mb-13: 1
+  mb-14: 1
+  mb-15: 1
+  mb-16: 1
+  mb-17: 1
+  mb-18: 1
+  mb-19: 1
