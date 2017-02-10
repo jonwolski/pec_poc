@@ -18,7 +18,7 @@ class VendingMachine < ActiveRecord::Base
     event :event_e2 do
       transition :e => :f
     end
-    after_transition on: any, do: :process
+    after_transition on: any - [:a], do: :process
   end
 
   def process
@@ -29,7 +29,7 @@ class VendingMachine < ActiveRecord::Base
   private
 
   def sleep_period
-    (state_name_to_int - 10) * 10 * MILLISECONDS
+    (state_name_to_int - 10) * 10# * MILLISECONDS
   end
 
   def state_name_to_int

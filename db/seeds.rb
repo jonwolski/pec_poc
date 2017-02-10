@@ -34,10 +34,10 @@ end
 VendingMachine.with_state(:e).each do |vm|
   Transition.create(vending_machine: vm, event: :event_e)
 end
-VendingMachine.with_states(%i[a b c d e]).each do |vm|
-  Transition.create(vending_machine: vm, event: :event_b)
-  Transition.create(vending_machine: vm, event: :event_c)
-  Transition.create(vending_machine: vm, event: :event_d)
-  Transition.create(vending_machine: vm, event: :event_e2)
-end
+#VendingMachine.with_states(%i[a b c d e]).each do |vm|
+#  Transition.create(vending_machine: vm, event: :event_b)
+#  Transition.create(vending_machine: vm, event: :event_c)
+#  Transition.create(vending_machine: vm, event: :event_d)
+#  Transition.create(vending_machine: vm, event: :event_e2)
+#end
 
