@@ -1,8 +1,15 @@
 desc 'replay the stored state transitions on their state machine instances'
 task replay_transitions: :environment do
-  q_task_id = SecureRandom.uuid
-  Transition.unprocessed.update_all(enqueued_at: Time.now, q_task_id: q_task_id)
-  Transition.replay_in_batches(q_task_id)
-#  Transition.order(:id).where(q_task_id: q_task_id).each &:replay!
+  Transition.replay_in_batches!
+end
+
+desc 'load more transitions for replay'
+task load_transitions: :environment do
+  VendingMachine.with_states(%i[a b c d e]).each do |vm|
+    Transition.create(vending_machine: vm, event: :event_b)
+    Transition.create(vending_machine: vm, event: :event_c)
+    Transition.create(vending_machine: vm, event: :event_d)
+    Transition.create(vending_machine: vm, event: :event_e2)
+  end
 end
 

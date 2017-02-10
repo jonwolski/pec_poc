@@ -1,7 +1,7 @@
 class TransitionReplayJob < ActiveJob::Base
   queue_as :default
-  def perform(q_task_id, vending_machine_id)
-    Transition.replay_batch(q_task_id, vending_machine_id)
+  def perform(vending_machine_id)
+    Transition.replay_batch!(vending_machine_id)
   end
 
 #  def perform(transition_id, vending_machine_id)

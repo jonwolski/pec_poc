@@ -10,7 +10,7 @@ default: &default
   user: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   database: <%= ENV['DB_DATABASE'] %>
-  pool: 5
+  pool: 25
   timeout: 5000
 
 development:
